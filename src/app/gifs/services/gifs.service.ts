@@ -56,4 +56,8 @@ export class GifsService {
     );
   }
 
+  public getHistoryGifs(query: string): Gif[] {
+    return this.searchHistory()[query] ?? [];
+  }
+
 }

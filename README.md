@@ -2,11 +2,12 @@
 
 ### CONCEPTS
 * loadComponent
-* signal ( input )
+* signal ( input ) + toSignal
 * environment files
 * alias in tsconfig.json
 * httpClient
 * provideHttpClient
+* ActivatedRoute + routerLinkActive
 
 ### TECHNOLOGIES
 * Tailwindcss v4.0
