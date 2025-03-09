@@ -1,18 +1,22 @@
 # GifsApp
 
 ### CONCEPTS
-### loadComponent
-### signal ( input )
-### environment files
-### alias in tsconfig.json
+* loadComponent
+* signal ( input )
+* environment files
+* alias in tsconfig.json
+* httpClient
+* provideHttpClient
 
 ### TECHNOLOGIES
-### Tailwindcss v4.0
-### Fontawesome
-### Flowbite
+* Tailwindcss v4.0
+* Fontawesome
+* Flowbite
 
-### DEPLOYED ON NETLIFY
+### START UP APPLICATION
 ```
 npm install
 ng serve
 ```
+
+### DEPLOYED ON NETLIFY
