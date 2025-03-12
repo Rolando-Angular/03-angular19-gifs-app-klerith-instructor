@@ -1,10 +1,13 @@
-import { computed, inject, Injectable, signal } from "@angular/core";
+import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "@environments/environment";
 import { Gif } from "../interfaces/gif.interface";
 import { GifMapper } from "../mapper/gif.mapper";
 import { map, Observable, tap } from "rxjs";
 import type { GiphyResponse } from "../interfaces/giphy.interface";
+
+type HistoryGif = Record<string, Gif[]>;
+const GIFS_SEARCH: string = 'gifs-search';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +16,16 @@ export class GifsService {
 
   public trendingGifs = signal<Gif[]>([]);
   public trendingGifsLoading = signal(true);
-  public searchHistory = signal<Record<string, Gif[]>>({});
+  public searchHistory = signal<HistoryGif>(
+    this.loadSearchHistory()
+  );
   public searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
 
   private httpClient = inject(HttpClient);
+
+  public saveGifsToLocalStorage = effect(() => {
+    localStorage.setItem(GIFS_SEARCH, JSON.stringify(this.searchHistory()));
+  });
 
   constructor() {
     this.loadTrendingGifs();
@@ -26,7 +35,7 @@ export class GifsService {
     this.httpClient.get<GiphyResponse>(`${environment.giphyUrl}/gifs/trending`, {
       params: {
         'api_key': environment.giphyApikey,
-        'limit': 20,
+        'limit': 6,
         'offset': 0,
       }
     }).subscribe((resp) => {
@@ -41,7 +50,7 @@ export class GifsService {
       params: {
         'api_key': environment.giphyApikey,
         'q': query,
-        'limit': 10,
+        'limit': 6,
         'offset': 0,
       }
     }).pipe(
@@ -58,6 +67,11 @@ export class GifsService {
 
   public getHistoryGifs(query: string): Gif[] {
     return this.searchHistory()[query] ?? [];
+  }
+
+  private loadSearchHistory(): HistoryGif {
+    const searchHistoryStorage: HistoryGif = JSON.parse(localStorage.getItem(GIFS_SEARCH) ?? '{}');
+    return searchHistoryStorage;
   }
 
 }
