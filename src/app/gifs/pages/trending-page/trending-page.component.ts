@@ -1,31 +1,30 @@
-import { Component, inject } from '@angular/core';
-import { GifsListComponent } from "../../components/gifs-list/gifs-list.component";
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
 import { GifsService } from '../../services/gifs.service';
-
-// const imageUrls: string[] = [
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg",
-//   "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
-// ];
 
 @Component({
   selector: 'gif-trending-page',
   templateUrl: './trending-page.component.html',
-  imports: [
-    GifsListComponent,
-  ],
 })
 export default class TrendingPageComponent {
 
   public gifsService: GifsService = inject(GifsService);
+  public scrollDivRef = viewChild<ElementRef<HTMLDivElement>>('groupDiv');
+
+  public onScroll(): void {
+    const scrollDiv = this.scrollDivRef()?.nativeElement;
+    if (!scrollDiv) return;
+    // del total de scroll que tiene el elemento div, cuanto scroll se ha recorrido
+    const scrollTop = scrollDiv.scrollTop;
+    // total de scroll que tiene el elemento div (altura total del elemento)
+    const scrollHeight = scrollDiv.scrollHeight;
+    // el total de altura que tiene el viewport de la página
+    const clientHeight = scrollDiv.clientHeight;
+
+    const isAtBottom = scrollTop + clientHeight + 300 >= scrollHeight;
+
+    if (isAtBottom) {
+      // TODO: Cargar la siguiente pagina de gifs
+    }
+  }
 
 }

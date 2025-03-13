@@ -2,7 +2,7 @@
 
 ### CONCEPTS
 * loadComponent
-* signal ( input ) + toSignal
+* signal ( input ) + computed + toSignal + viewchild
 * environment files
 * alias in tsconfig.json
 * httpClient
