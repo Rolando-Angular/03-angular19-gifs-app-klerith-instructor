@@ -8,6 +8,7 @@
 * httpClient
 * provideHttpClient
 * ActivatedRoute + routerLinkActive
+* AfterViewInit
 
 ### TECHNOLOGIES
 * Tailwindcss v4.0
