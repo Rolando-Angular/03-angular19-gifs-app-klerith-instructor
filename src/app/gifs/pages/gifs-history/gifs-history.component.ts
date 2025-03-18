@@ -13,7 +13,7 @@ import { GifsListComponent } from "../../components/gifs-list/gifs-list.componen
 export default class GifsHistoryComponent {
 
   public gifsService: GifsService = inject(GifsService);
-  public query = toSignal<string>(inject(ActivatedRoute).params
+  public query = toSignal<string | undefined>(inject(ActivatedRoute).params
     .pipe(
       map((params) => params['query'])
     ));
