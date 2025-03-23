@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { GifsListComponent } from "../../components/gifs-list/gifs-list.component";
 import { GifsService } from '../../services/gifs.service';
-import { Gif } from '../../interfaces/gif.interface';
+import type { Gif } from '../../interfaces/gif.interface';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({

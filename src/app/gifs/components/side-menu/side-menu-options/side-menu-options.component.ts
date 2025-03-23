@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { MenuOption } from '../../../interfaces/menu-option.interface';
+import type { MenuOption } from '../../../interfaces/menu-option.interface';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { GifsService } from '../../../services/gifs.service';
 

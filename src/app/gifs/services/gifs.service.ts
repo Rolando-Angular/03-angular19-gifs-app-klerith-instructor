@@ -1,7 +1,7 @@
 import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "@environments/environment";
-import { Gif } from "../interfaces/gif.interface";
+import type { Gif } from "../interfaces/gif.interface";
 import { GifMapper } from "../mapper/gif.mapper";
 import { map, Observable, tap } from "rxjs";
 import type { GiphyResponse } from "../interfaces/giphy.interface";
