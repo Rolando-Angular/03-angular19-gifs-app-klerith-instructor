@@ -22,3 +22,4 @@ ng serve
 ```
 
 ### DEPLOYED ON NETLIFY
+### https://gorgeous-seahorse-d4cbef.netlify.app
