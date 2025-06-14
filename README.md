@@ -22,4 +22,4 @@ ng serve
 ```
 
 ### DEPLOYED ON NETLIFY
-### https://gorgeous-seahorse-d4cbef.netlify.app
+### https://angular19-gifs-app-rbard.netlify.app/
